@@ -2,8 +2,13 @@
 import discord
 from discord import app_commands
 from discord.ext import commands
+import os
+import dotenv
 
-TOKEN = "MTUwMjA1NzczOTk2MTIzNzU2NA.Gbmq_x.6Jyryq9h4xhrQpfG6golehJ2O36vq5H9qKFFf8"
+from dotenv import load_dotenv
+
+load_dotenv()
+
 GUILD_ID = 1502054798932054096  # Guild ID where command registers
 STAFF_ROLE_IDS = [1502054894859718656]  # list of role IDs that can see/manage tickets
 
@@ -182,4 +187,4 @@ async def on_ready():
     await tree.sync(guild=discord.Object(id=GUILD_ID))
     print(f"Logged in as {bot.user}")
 
-bot.run(TOKEN)
+bot.run(os.getenv("TOKEN"))
